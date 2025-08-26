@@ -1,0 +1,15 @@
+<header class="main-header">
+    <div class="container">
+        <h1>Minha Loja Online</h1>
+        <nav>
+            <a routerLink="/" routerLinkActive="active-link"[routerLinkActiveOptions]="{exact: true}">Home</a>
+            <a routerLink="/produtos" routerLinkActive="active-link">Produtos</a> 
+            <a routerLink="/carrinho" routerLinkActive="active-link">Carrinho({{quantidadeItens}})</a>
+            <a routerLink="/sobre" routerLinkActive="active-link">Sobre</a> 
+            <a routerLink="/contato" routerLinkActive="active-link">Contato</a>
+            <a *ngIf="!usuarioLogado" routerLink="/login" routerLinkActive="active-link">Login</a>
+            <a *ngIf="usuarioLogado" (click)="logout()" style="cursor: pointer;" routerLinkActive="active-link">Logout</a>
+            
+        </nav>
+    </div>
+</header>

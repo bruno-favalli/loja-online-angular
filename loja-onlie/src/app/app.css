@@ -1,0 +1,19 @@
+/* Adicione estas regras em src/styles.css */
+html, body {
+    height: 100%;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  app-root {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .main-content {
+    flex: 1; /* Faz o conteúdo principal ocupar todo o espaço disponível */
+  }

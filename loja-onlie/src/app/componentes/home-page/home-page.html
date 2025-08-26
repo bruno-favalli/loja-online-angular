@@ -1,0 +1,32 @@
+<section class="hero">
+    <div class="hero-content">
+      <h1>A Melhor Loja de Tecnologia</h1>
+      <p>Encontre os melhores produtos e as últimas novidades do mundo da tecnologia.</p>
+      <a routerLink="/produtos" class="btn-hero">Ver Todos os Produtos</a>
+    </div>
+  </section>
+  
+  <section class="featured-categories">
+    <h2>Categorias Populares</h2>
+    <div class="categories-grid">
+      <a *ngFor="let categoria of categorias"
+   [routerLink]="['/produtos']"
+   [queryParams]="{ categoria: categoria }"
+   class="category-card">
+  <h3>{{ categoria | titlecase }}</h3>
+</a>
+    </div>
+  </section>
+  
+  <section class="featured-products">
+    <h2>Produtos em Destaque</h2>
+    <div class="products-grid">
+      <div *ngFor="let produto of produtosDestaque" class="product-card">
+        <a [routerLink]="['/produto', produto.id]">
+          <img [src]="produto.image" [alt]="produto.title">
+          <h4>{{ produto.title }}</h4>
+          <p class="price">{{ produto.price | currency:'BRL' }}</p>
+        </a>
+      </div>
+    </div>
+  </section>

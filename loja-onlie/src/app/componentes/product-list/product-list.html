@@ -1,0 +1,33 @@
+<div class="container-geral">
+    <h2>Nossos Produtos</h2>
+    <div class="filters-container">
+        <button
+          (click)="filtrarPorCategoria(null)"
+          [class.active]="categoriaSelecionada === null"
+          class="filter-btn">
+          Todos
+        </button>
+        <button
+          *ngFor="let categoria of categorias"
+          (click)="filtrarPorCategoria(categoria)"
+          [class.active]="categoriaSelecionada === categoria"
+          class="filter-btn">
+          {{ categoria | titlecase }} </button>
+      </div>
+    <div class="product-grid">
+        <div class="product-card" *ngFor="let produto of produtosFiltrados">
+            
+            <a [routerLink]="['/produto', produto.id]">
+            <img [src]="produto.image" alt="Imagem do {{ produto.title }}">
+            <h3>{{ produto.title }}</h3>
+            <p class="descricao">{{ produto.description }}</p>
+            <p class="preco">{{ produto.price | currency:'BRL' }}</p>
+            </a>
+            <button (click)="adicionarAoCarrinho(produto)">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+    <div *ngIf="produtosFiltrados.length === 0" class="no-products">
+        <h3>Nenhum produto encontrado nesta categoria.</h3>
+      </div>
+</div>
+

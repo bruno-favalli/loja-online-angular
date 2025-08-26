@@ -1,0 +1,30 @@
+<h2>Gerenciar Produtos</h2>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Imagem</th>
+        <th>Título</th>
+        <th>Preço</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtos">
+        <td>{{ produto.id }}</td>
+        <td>
+          <img [src]="produto.image" [alt]="produto.title" class="product-thumbnail">
+        </td>
+        <td class="product-title">{{ produto.title }}</td>
+        <td>{{ produto.price | currency:'BRL' }}</td>
+        <td>
+          <button (click)="deletarProduto(produto.id)" class="btn-delete">
+            Deletar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
