@@ -1,59 +1,92 @@
-# LojaOnlie
+# Angular - Projeto de Loja
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
+Este projeto é o front-end de uma loja online. A aplicação é uma Single-Page Application (SPA) totalmente funcional que permite aos usuários visualizar produtos, gerenciar um carrinho de compras e autenticar-se em uma área de administração.
 
-## Development server
+Para simular um ambiente real, o projeto consome a API pública e gratuita **FakeStoreAPI**, que fornece todos os dados necessários de produtos, categorias e autenticação de usuários.
 
-To start a local development server, run:
+## ✨ Funcionalidades Principais
 
-```bash
-ng serve
-```
+A aplicação implementa um fluxo completo de e-commerce, incluindo:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* **Vitrine de Produtos:**
+    * Página inicial com produtos e categorias em destaque para guiar o usuário.
+    * Página de catálogo com a listagem completa de todos os produtos.
+    * Filtro de produtos por categoria.
+* **Detalhes do Produto:**
+    * Rota dinâmica (`/produto/:id`) para exibir informações detalhadas de um único produto.
+    * Botão para adicionar o produto diretamente ao carrinho.
+* **Carrinho de Compras:**
+    * Gerenciamento de estado reativo: o carrinho é atualizado em tempo real em toda a aplicação.
+    * Página dedicada para exibir os itens, quantidades e o valor total da compra.
+    * Funcionalidade para remover itens e alterar quantidades.
+* **Sistema de Autenticação:**
+    * Página de login com formulário que realiza uma requisição `POST` para a API.
+    * Armazenamento de token JWT no `localStorage` após um login bem-sucedido.
+    * O estado de login (logado/deslogado) é refletido globalmente no cabeçalho.
+* **Rotas Protegidas:**
+    * A página do carrinho de compras e a área de administração só são acessíveis para usuários autenticados.
+* **Módulo de Administração:**
+    * Área de administração em `/admin`, carregada sob demanda (Lazy Loading) para otimização de performance.
+    * Tabela com todos os produtos e a funcionalidade para deletar um item (simulando um CRUD).
+* **Páginas Adicionais:**
+    * Páginas "Sobre" e "Contato" com formulário validado para uma experiência de site mais completa.
 
-## Code scaffolding
+## 🛠️ Tecnologias e Conceitos Aplicados
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Este projeto foi construído utilizando as boas práticas e os principais recursos do ecossistema Angular:
 
-```bash
-ng generate component component-name
-```
+* **Angular (Standalone Components):** Arquitetura moderna de componentes.
+* **TypeScript:** Linguagem base para o desenvolvimento, garantindo um código mais seguro e legível.
+* **Roteamento Avançado (`RouterModule`):**
+    * Criação de rotas para todas as páginas da aplicação.
+    * Uso de **Lazy Loading** para o módulo de administração.
+    * Implementação de **Route Guards** (`CanActivate`) para proteger rotas.
+* **Serviços e Injeção de Dependência:**
+    * `Product` para a lógica de comunicação com os endpoints de produtos.
+    * `Auth` para gerenciar login, logout e o estado de autenticação.
+    * `Carrinho` para gerenciar o estado do carrinho de compras.
+* **`HttpClient` e Comunicação com API:**
+    * Uso de `HttpClient` para todas as requisições à FakeStoreAPI.
+    * Implementação de `HttpInterceptor` para anexar automaticamente o token JWT.
+    * Uso dos métodos `GET`, `POST` e `DELETE`.
+* **RxJS (`Observables` e `BehaviorSubject`):**
+    * Utilização de `Observables` para lidar com a natureza assíncrona das chamadas HTTP.
+    * Gerenciamento de estado reativo com `BehaviorSubject`, garantindo que a UI reaja instantaneamente a qualquer mudança de dados.
+* **Formulários (Template-Driven):**
+    * Uso de `FormsModule` e `[(ngModel)]` para criar formulários interativos com validação em tempo real.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🏁 Como Rodar o Projeto Localmente
 
-```bash
-ng generate --help
-```
+Siga os passos abaixo para executar a aplicação em seu ambiente de desenvolvimento.
 
-## Building
 
-To build the project run:
+### Passos
 
-```bash
-ng build
-```
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git](https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git)
+    ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+2.  **Navegue até a pasta do projeto:**
+    ```bash
+    cd nome-da-pasta-do-projeto
+    ```
 
-## Running unit tests
+3.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+4.  **Execute o servidor de desenvolvimento:**
+    ```bash
+    ng serve
+    ```
 
-```bash
-ng test
-```
+5.  **Acesse no navegador:**
+    Abra seu navegador e acesse `http://localhost:4200/`.
 
-## Running end-to-end tests
+### Credenciais para Teste
+Para testar as funcionalidades de login e áreas protegidas, utilize as credenciais fornecidas pela FakeStoreAPI:
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* **Usuário:** `mor_2314`
+* **Senha:** `83r5^_`
